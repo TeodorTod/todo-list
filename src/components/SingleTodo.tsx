@@ -24,25 +24,52 @@ const SingleTodo: React.FC<Props> = ({ todo, todos, setTodos }) => {
 
     const handleDelete = (id: number) => {
         const detetetElements = todos.filter(todo => {
-            return todo.id !== id 
+            return todo.id !== id
         })
         setTodos(detetetElements);
     }
 
+    const handleEdit = (e: React.FormEvent, id: number) => {
+        e.preventDefault();
+
+        setTodos(todos.map(todo => (
+            todo.id===id
+            ? {...todo, todo: editTodo}
+            : todo
+        )))
+        setEdit(false);
+    };
+
     return (
-        <form className="todos__single">
+        <form className="todos__single" onSubmit={(e) => handleEdit(e, todo.id)}>
             {
-                todo.isDone
-                    ? <s className="todos__single--text">{todo.todo}</s>
-                    : <span className="todos__single--text">{todo.todo}</span>
+                edit
+                    ? <input
+                        value={editTodo}
+                        type="text"
+                        className="todos__single--text"
+                        onChange={(e) => {
+                            setEditTodo(e.target.value);
+                        }}
+                    />
+                    : todo.isDone
+                        ? <s className="todos__single--text">{todo.todo}</s>
+                        : <span className="todos__single--text">{todo.todo}</span>
+
             }
+
+
 
             <div>
                 <span className="icon">
-                    <AiFillEdit />
+                    <AiFillEdit onClick={() => {
+                        if (!edit && !todo.isDone) {
+                            setEdit(!edit);
+                        }
+                    }} />
                 </span>
                 <span className="icon">
-                    <AiFillDelete onClick={() => handleDelete(todo.id)}/>
+                    <AiFillDelete onClick={() => handleDelete(todo.id)} />
                 </span>
                 <span className="icon">
                     <MdOutlineDone onClick={() => handleDone(todo.id)} />
