@@ -23,3 +23,34 @@
     <hr/>
     </div>
 <p>
+
+<hr/>
+<h2>Setup:</h2>
+- <i><b>Download or clone the repository</b></i><br>
+- <i><b>To start: run npm start</b></i>
+
+<hr/>
+
+Used features of the platform:
+
+- <i><b>Responsive Design</b></i>
+- <i><b>Add unlimited tasks</b></i>
+- <i><b>Update current task</b></i>
+- <i><b>Check done task</b></i>
+- <i><b>Delete select task</b></i>
+
+<hr/>
+
+Used technologies:
+
+- <i><b>JavaScript with React library</b></i>
+- <i><b>TypeScript</b></i>
+- <i><b>HTML</b></i>
+- <i><b>CSS</b></i>
+
+<hr/>
+
+Dependencies, (besides Create-React-App deps): 
+
+- React Icons
+- uniqid
