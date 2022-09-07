@@ -8,18 +8,31 @@ interface Props {
     setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
-const TodoList: React.FC<Props> = ({todos, setTodos}) => {
+
+
+const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
+   
     return (
-        <div className="todos">
-            {todos.map(todo => (
-                <SingleTodo 
-                todo={todo} 
-                key={todo.id}
-                todos={todos}
-                setTodos={setTodos}
-                />
-            ))}
-        </div>
+        <>
+            {todos.length < 1 && 
+            <h1>There are no tasks available</h1>}
+            {
+                todos.length > 0 &&
+                <div className="todos">
+                    {todos.map(todo => (
+                        <SingleTodo
+                            todo={todo}
+                            key={todo.id}
+                            todos={todos}
+                            setTodos={setTodos}
+                        />
+                    ))}
+                </div>
+            }
+
+
+
+        </>
     );
 }
 
