@@ -23,10 +23,14 @@ const SingleTodo: React.FC<Props> = ({ todo, todos, setTodos }) => {
     }
 
     const handleDelete = (id: number) => {
-        const detetetElements = todos.filter(todo => {
-            return todo.id !== id
-        })
-        setTodos(detetetElements);
+        const confirmation = window.confirm('Are you sure you want to delete this homework?');
+        if (confirmation) {
+            const detetetElements = todos.filter(todo => {
+                return todo.id !== id
+            })
+            setTodos(detetetElements);
+        }
+
     }
 
     const handleEdit = (e: React.FormEvent, id: number) => {
